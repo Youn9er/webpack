@@ -1,0 +1,28 @@
+webpack：
+    基于模块化开发的一个工程化开发工具，任何资源（图片、css等）都可以作为模块加载进来（加载机loader）
+    基于commonJS规范的，也支持amd，cmd规范。建议使用commonJS规范。
+    webpack由react推动，react相关demo都是基于webpack，react的相关处理的插件，webpack是最丰富的。
+
+    //在webpack的配置文件中，通常将配置暴露在接口中
+    module.exports = {
+        //定义配置文件
+        //定义入口文件
+        entry:"./js/app.js",
+        //定义文件发布的位置
+        output:{
+            filename:"demo/dest.js"
+        }
+    }
+
+    Entry定义入口文件：
+        可以是字符串，表示一个入口文件
+
+        也可以是一个对象：定义多个入口文件
+            key：表示入口文件的名称（发布的）
+            value：项目开发中的真实地址
+
+    output定义文件发布的位置：
+        值是一个对象
+        path：定义发布的目录，如果不定义该属性，该路径可以写在filename属性中。
+        filename：定义要发布的文件的地址（通常与entry对应）。
+            当entry定义为对象时，（此时入口文件有多个），要将filename定义为[name].js。
