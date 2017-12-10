@@ -26,3 +26,38 @@ webpack：
         path：定义发布的目录，如果不定义该属性，该路径可以写在filename属性中。
         filename：定义要发布的文件的地址（通常与entry对应）。
             当entry定义为对象时，（此时入口文件有多个），要将filename定义为[name].js。
+
+    webpack服务器插件：webpack-dev-server
+        通过这个服务器，可以预览项目
+        webpack-dev-server指令将项目发布到服务器
+
+    webpack可以加载任何资源（CSS，图片等等）
+    加载资源需要在module属性中定义加载配置（指定加载器）
+        在module属性中，通过定义loaders定义加载器：
+            属性值是一个数组，每一个成员代表一个配置。
+                通过test定义匹配的规则(正则表达式)，通过loader定义加载器
+                通过！级联多个加载器
+
+    加载CSS需要两个加载器：
+        style-loader
+        css-loader
+
+        样式文件默认加载到header标签内
+
+
+    模块化加载图片：
+        图片加载器：url-loader
+            两种加载方式：
+                1.图片嵌入文件内部（图片转换为base64格式）
+                2.图片作为一个资源嵌入（图片路径引入）
+        在webpack中，在url-loader中定义limit参数，决定采取哪种方式引入。
+            语法：url-loader?limit=2048
+                ?定义加载器的参数配置
+                2048单位是b，2048表示2kb
+
+                图片小于2kb，采取内嵌式加载图片
+                图片大于2kb，采取外联式加载图片
+
+    JS压缩：通过插件完成。
+        直接配置plugins使用
+            属性值为一个数组，每一个成员代表一个插件。
